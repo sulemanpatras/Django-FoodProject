@@ -31,10 +31,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'Templates/foodapp/')
 # Load environment variables from .env file
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = '+v&d743tx47^6&bth5n808fbftmm^n6*p%vq_qe_tu3qz-*z1-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 
@@ -149,5 +149,5 @@ STATIC_URL = '/static/'
 #     '/home/suleman/Desktop/Project/FoodProject/static',
 # ]
 
-# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
