@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
-from decouple import config
 import os
 
 
@@ -36,7 +35,7 @@ SECRET_KEY = '+v&d743tx47^6&bth5n808fbftmm^n6*p%vq_qe_tu3qz-*z1-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,23 +87,23 @@ WSGI_APPLICATION = 'FoodProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'kmiBSGWejuKUUWmFKUzWxuxwuTrJpRBo',
-        'HOST': 'roundhouse.proxy.rlwy.net',
-        'PORT': '55781',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'kmiBSGWejuKUUWmFKUzWxuxwuTrJpRBo',
+#         'HOST': 'roundhouse.proxy.rlwy.net',
+#         'PORT': '55781',
+#     }
+# }
 
 
 # Password validation
@@ -145,9 +144,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 # STATICFILES_DIRS = [
 #     '/home/suleman/Desktop/Project/FoodProject/static',
 # ]
-
-# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')

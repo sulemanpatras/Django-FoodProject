@@ -1,203 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="en" dir="ltr">
+  <head>
 	{% load static %}
-    <title>Sizzle | Home</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/imperial_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bevan&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat:400,700&subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style media="screen">
+      .w3-content,.w3-auto{margin-left:auto;margin-right:auto}.w3-content{max-width:980px}.w3-auto{max-width:1140px}
+      .w3-section,.w3-code{margin-top:16px!important;margin-bottom:16px!important}
+      .mySlides {display:none;}
+    </style>
 
-<body>
-    <!-- PRE LOADER -->
-    <section class="preloader">
-        <div class="spinner">
-            <span class="spinner-rotate"></span>
-        </div>
-    </section>
-    <!-- MENU -->
-    <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <!--            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar">raju</span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                    </button>
-         -->
-                <!-- lOGO TEXT HERE -->
-                <a href="index.html" class="navbar-brand"> Sizzle </a>
-            </div>
-            <!-- MENU LINKS -->
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-nav-first">
-                    <li><a href="home" class="smoothScroll">Home</a></li>
-					{% if request.session.CustId is None and request.session.AdminId is not None %}
-                    <li><a href="addfoods" class="smoothScroll">Add Food</a></li>
-					{% endif %}
-                    <li><a href="allfood" class="smoothScroll">Food Menu</a></li>
-					{% if request.session.CustId is not None and request.session.AdminId is None %}
-                    <li><a href="allcart" class="smoothScroll"><i class="fa fa-shopping-cart" style="font-size:18px;"></i> Cart</a></li>
-					{% endif %}
-					
-				{% if request.session.CustId is not None and request.session.AdminId is None %}	
-					<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-user-circle" style="font-size:20px;"></i>&nbsp;My Account
-            </a>
-            <div class="dropdown-menu" style="background-color:#000;border-radius:4px;padding-top: 15px;border-bottom: 3px solid red; " aria-labelledby="navbarDropdown">
-			
-              <a class="dropdown-item" href="getcustomer"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Edit Profile</a>
-			  
-            <div class="dropdown-divider" style="padding-top: 10px;border-bottom: 1px solid white; opacity:0.7;width:90%;margin-left:5%;" ></div>
-			<div class="dropdown-divider" style="padding-bottom: 10px;" ></div>
-              <a class="dropdown-item" href="orders"><i class="fas fa-clipboard-list" ></i>&nbsp;&nbsp;&nbsp;Orders</a>
-			  
-            <div class="dropdown-divider" style="padding-bottom: 10px;" ></div>
-			  
+    <title>Sizzle | FoodMenu</title>
+	<link rel="shortcut icon" href="{% static 'images/favico.png' %}" type="image/x-icon">
+  </head>
+  <body style="background-image: none;">
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="width:100%;background-image: linear-gradient(180deg,#FFF,#FFF);box-shadow: 0px 0px 7px 0px #404040;">
+      <a class="navbar-brand" href="/"><h2 style="color:black;font-family:sans-serif;font-weight:bolder;"><b>Sizzle</b></h2></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav" style="margin-left:auto!important;margin-right:30px;">
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
           </li>
-		  {% endif %}
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-					{% if request.session.CustId is not None and request.session.AdminId is None %}
-					<a href="tel:+918422081717"  class="section-btn">📞 Call Now</a>
-					{% endif %}
-					
-					{% if request.session.CustId is None and request.session.AdminId is None %}
-                    <a href="addcustomer" class="section-btn">Register</a>
-					{% endif %}
-					
-					{% if request.session.CustId is None and request.session.AdminId is None %}
-                    <a href="login" class="section-btn">Login</a>
-					{% endif %}
-					
-					{% if request.session.CustId is not None or request.session.AdminId is not None %}
-                    <a href="logout" class="section-btn"><i class="fa fa-sign-out" style="color:white"></i> Logout</a>
-					{% endif %}
-                </ul>
-            </div>
-        </div>
-    </section>
-    <div class="inner-page-banner-area">
-        <div class="container">
-            <div class="pagination-area">
-                <h2>Our MEnu</h2>
-                <ul>
-                    <li><a href="#">Home -</a> /</li>
-                    <li>Menu</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-	{% for f in foodlist %}
-    <!-- cards -->
-    <div class="card hover">
-        <div class="card-img" style="background-image:url({{f.FoodImage.url}});">
-            <div class="overlay">
-                <div class="overlay-content">
-					{% if request.session.CustId is None and request.session.AdminId is not None %}
-					<a class="hover" href="/getfood/{{f.FoodId}}">Update</a>
-					<a class="hover" href="/deletefood/{{f.FoodId}}">Delete</a>
-					{% endif %}
-					{% if request.session.CustId is not None and request.session.AdminId is None %}
-                    <a class="hover" href="/addtocart/{{f.FoodId}}">Add To Cart</a>
-					{% endif %}
-                </div>
-            </div>
-        </div>
-        <div class="card-content">
-            <a href="#!">
-                <h2><b>{{f.FoodName}}</b></h2>
-                <p>&#8377; {{f.FoodPrice}}</p>
+          {% if request.session.CustId is None and request.session.AdminId is not None %}
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-link" href="addfoods">Add Food <span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-link" href="allfood">Food Menu <span class="sr-only">(current)</span></a>
+          </li>
+          {% if request.session.CustId is None and request.session.AdminId is None %}
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-link" href="addcustomer">Register <span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
+          {% if request.session.CustId is None and request.session.AdminId is None %}
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-link" href="login">Login <span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
+          {% if request.session.CustId is not None and request.session.AdminId is None %}
+          <li class="nav-item active">
+            <a class="nav-link" id="nav-link" href="allcart"><i class="fas fa-shopping-cart" style="font-size:20px;"></i> Cart <span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
+          {% if request.session.CustId is not None or request.session.AdminId is not None %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="far fa-user-circle" style="font-size:20px;color:black;"></i>&nbsp;My Account
             </a>
-        </div>
-    </div>
-    <!-- cards end here-->
-	{% endfor %}
-    <!-- FOOTER -->
-    <footer id="footer" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-8">
-                    <div class="footer-info">
-                        <div class="section-title">
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s">Find us</h2>
-                        </div>
-                        <address class="wow fadeInUp" data-wow-delay="0.4s">
-                            <p>123, pragati college,Datta Nagar<br>Dombivali East</p>
-                        </address>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-8">
-                    <div class="footer-info">
-                        <div class="section-title">
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s">Reservation</h2>
-                        </div>
-                        <address class="wow fadeInUp" data-wow-delay="0.4s">
-                            <p>+919876543210 | +919876543210</p>
-                            <p><a href="mailto:cmdzinc@gmail.com">info@sizzle.com</a></p>
-                            <p>Telegram:@Heroofswarg </p>
-                        </address>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-8">
-                    <div class="footer-info footer-open-hour">
-                        <div class="section-title">
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s">Open Hours</h2>
-                        </div>
-                        <div class="wow fadeInUp" data-wow-delay="0.4s">
-                            <p>Monday: Closed</p>
-                            <div>
-                                <strong>Tuesday to Sunday</strong>
-                                <p>7:00 AM - 9:00 PM</p>
-                            </div>
-                            <div>
-                                <strong>Saturday - Sunday</strong>
-                                <p>11:00 AM - 12:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-4">
-                    <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
-                        <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                        <li><a href="#" class="fa fa-twitter"></a></li>
-                        <li><a href="#" class="fa fa-instagram"></a></li>
-                        <li><a href="#" class="fa fa-google"></a></li>
-                    </ul>
-                    <div class="wow fadeInUp copyright-text" data-wow-delay="0.8s">
-                        <p><br>Copyright &copy; 2020 <br>Sizzle.com
-                            <br><br>Design By: <a rel="nofollow" href="#">RAR Group</a></p>
-                    </div>
-                </div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			{% if request.session.CustId is not None and request.session.AdminId is None %}
+              <a class="dropdown-item" href="getcustomer">Edit Profile</a>
+            <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="orders"><i class="fas fa-clipboard-list" style="font-size:20px;"></i>&nbsp;&nbsp;&nbsp;Orders</a>
+              <a class="dropdown-item" href="orders"><i class="fas fa-history" style="font-size:20px;"></i>&nbsp;&nbsp;Order History</a>
+            <div class="dropdown-divider"></div>
+			  {% endif %}
+              <a class="dropdown-item" style="background:red;width:1;border-radius:4px;" href="logout"><i class="fas fa-sign-out-alt" style="font-size:20px;color:white;"></i>&nbsp;&nbsp;<font color="white">Logout</font></a>
             </div>
+          </li>
+
+          {% endif %}
+        </ul>
+
+      </div>
+    </nav>
+
+    <main style="width:100%;margin-top: 0;margin-bottom: 10px;background-color:#FFF;>
+      <div class="" style="max-width:100%;padding-top:20px;padding-bottom:20px;">
+        <img class="mySlides" src="{% static 'images/slider1.jpg' %}" height="400px" style="width:100%">
+        <img class="mySlides" src="{% static 'images/slider2.jpg' %}" height="400px" style="width:100%">
+        <img class="mySlides" src="{% static 'images/slider3.jpg' %}" height="400px" style="width:100%">
+        <img class="mySlides" src="{% static 'images/slider4.jpg' %}" height="400px" style="width:100%">
+        <div class="" style="position:static;">
+		<hr />
+          {% for f in foodlist %}
+          <div class="card">
+          <img src="{{f.FoodImage.url}}" alt="" style="height: 200px;width:100%;">
+          <h1>{{f.FoodName}}</h1>
+          <p class="price">{{f.FoodPrice}}</p>
+          {% if request.session.CustId is not None and request.session.AdminId is None %}
+          <p><a href="/addtocart/{{f.FoodId}}"><button>Add to Cart</button></a></p>
+          {% endif %}
+          {% if request.session.CustId is None and request.session.AdminId is not None %}
+          <p><a href="/getfood/{{f.FoodId}}"><button>Update</button></a></p>
+          <p><a href="/deletefood/{{f.FoodId}}"><button>Delete</button></a></p>
+          {% endif %}
+          </div>
+          {% endfor %}
+
+
         </div>
+
+      </div>
+      <script>
+        var myIndex = 0;
+        sizzlecarousel();
+
+        function sizzlecarousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+          myIndex++;
+          if (myIndex > x.length) {myIndex = 1}
+          x[myIndex-1].style.display = "block";
+          setTimeout(sizzlecarousel, 2000);
+        }
+      </script>
+    </main>
+    <footer>
+      <div class="foot-con">
+        <div class="fo-cont-1">
+            SIZZLE
+        </div>
+        <div class="fo-cont-2">
+          <a class="ext-link" href="#">Home</a> |
+            <a class="ext-link" href="#">About us</a> |
+              <a class="ext-link" href="#">Privacy Policy</a> |
+                <a class="ext-link" href="#">Terms & Conditions</a>
+        </div>
+        <div class="fo-cont-3">
+          Name:	Suleman Patras.<br />
+Phone:	+923221130670<br />
+Email:	sulemanpatras2@gmail.com<br />
+Address	Pakistan,Karachi
+        </div>
+      </div><hr style="background-color: grey;margin-top:0px;"/>Made with HTML5 & CSS.<br />
+      ©<script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> <a class="ext-link" href="/"><b>SIZZLE</b></a> All Rights Reserved
     </footer>
-    <!-- SCRIPTS -->
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
-    <script src="{% static 'js/wow.min.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'js/smoothscroll.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
-</body>
-
-</html>
-</body>
-
+  </body>
 </html>
